@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>placeholder</groupId>
-	<artifactId>cocktail-api</artifactId>
+	<artifactId>drink-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>cocktail-api</name>
+	<name>drink-api</name>
 	<description>API for a drink recommender web app using Spring Boot</description>
 
 	<properties>

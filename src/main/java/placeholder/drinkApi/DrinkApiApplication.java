@@ -1,13 +1,13 @@
-package placeholder.cocktailapi;
+package placeholder.drinkapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CocktailApiApplication {
+public class DrinkApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CocktailApiApplication.class, args);
+		SpringApplication.run(DrinkApiApplication.class, args);
 	}
 
 }
