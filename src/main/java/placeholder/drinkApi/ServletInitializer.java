@@ -1,4 +1,4 @@
-package placeholder.drinkapi;
+package placeholder.drinkApi;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(DrinkApiApplication.class);
+		return application.sources(placeholder.drinkApi.DrinkApiApplication.class);
 	}
 
 }

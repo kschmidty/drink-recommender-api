@@ -1,4 +1,4 @@
-package placeholder.drinkapi;
+package placeholder.drinkApi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

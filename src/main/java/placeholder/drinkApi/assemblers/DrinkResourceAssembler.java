@@ -1,10 +1,10 @@
-package placeholder.drinkapi.assemblers;
+package placeholder.drinkApi.assemblers;
 
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceAssembler;
 import org.springframework.stereotype.Component;
-import placeholder.drinkapi.controllers.DrinkController;
-import placeholder.drinkapi.models.Drink;
+import placeholder.drinkApi.controllers.DrinkController;
+import placeholder.drinkApi.models.Drink;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;

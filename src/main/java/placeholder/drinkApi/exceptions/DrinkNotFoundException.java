@@ -1,4 +1,4 @@
-package placeholder.drinkapi.exceptions;
+package placeholder.drinkApi.exceptions;
 
 public class DrinkNotFoundException extends RuntimeException {
 

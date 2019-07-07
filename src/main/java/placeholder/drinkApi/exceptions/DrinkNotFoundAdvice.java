@@ -1,4 +1,4 @@
-package placeholder.drinkapi.exceptions;
+package placeholder.drinkApi.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

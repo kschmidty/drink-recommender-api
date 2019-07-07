@@ -1,4 +1,4 @@
-package placeholder.drinkapi;
+package placeholder.drinkApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
