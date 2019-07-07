@@ -47,13 +47,13 @@ public class DrinkController {
     }
 
     @PostMapping()
-    public ResponseEntity<?> newDrink(@RequestBody Drink newDrink) throws URISyntaxException {
+    public ResponseEntity<?> newDrink(@RequestBody Drink newDrink) {
 
-        Resource<Drink> resource = assembler.toResource(repository.save(newDrink));
+        Drink savedDrink = repository.save(newDrink);
 
         return ResponseEntity
-                .created(new URI(resource.getId().expand().getHref()))
-                .body(resource);
+                .created(linkTo(methodOn(DrinkController.class).one(newDrink.getId())).toUri())
+                .body(assembler.toResource(savedDrink));
     }
 
     // Single item
@@ -68,7 +68,7 @@ public class DrinkController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceDrink(@RequestBody Drink newDrink, @PathVariable String id) throws URISyntaxException {
+    public ResponseEntity<?> replaceDrink(@RequestBody Drink newDrink, @PathVariable String id) {
 
         Drink updatedDrink = repository.findById(id)
                 .map(drink -> {
@@ -80,11 +80,9 @@ public class DrinkController {
                     return repository.save(newDrink);
                 });
 
-        Resource<Drink> resource = assembler.toResource(updatedDrink);
-
         return ResponseEntity
-                .created(new URI(resource.getId().expand().getHref()))
-                .body(resource);
+                .created(linkTo(methodOn(DrinkController.class).one(updatedDrink.getId())).toUri())
+                .body(assembler.toResource(updatedDrink));
     }
 
     @DeleteMapping("/{id}")
