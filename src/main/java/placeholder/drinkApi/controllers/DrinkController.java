@@ -2,12 +2,15 @@ package placeholder.drinkApi.controllers;
 
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import placeholder.drinkApi.assemblers.DrinkResourceAssembler;
 import placeholder.drinkApi.daos.DrinkRepository;
 import placeholder.drinkApi.exceptions.DrinkNotFoundException;
 import placeholder.drinkApi.models.Drink;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +18,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping("/drink")
+@RequestMapping("/drinks")
 public class DrinkController {
 
     private final DrinkRepository repository;
@@ -31,51 +34,64 @@ public class DrinkController {
     // Aggregate root
 
     @GetMapping()
-    public Resources<Resource<Drink>> all() {
+    public ResponseEntity<?> all() {
 
         List<Resource<Drink>> drinks = repository.findAll().stream()
                 .map(assembler::toResource)
                 .collect(Collectors.toList());
 
-        return new Resources<>(drinks,
+        Resources<Resource<Drink>> resources = new Resources<>(drinks,
                 linkTo(methodOn(DrinkController.class).all()).withSelfRel());
+
+        return ResponseEntity.ok(resources);
     }
 
     @PostMapping()
-    public Resource<Drink> newDrink(@RequestBody Drink newDrink) {
+    public ResponseEntity<?> newDrink(@RequestBody Drink newDrink) throws URISyntaxException {
 
-        Drink drink = repository.save(newDrink);
+        Resource<Drink> resource = assembler.toResource(repository.save(newDrink));
 
-        return assembler.toResource(drink);
+        return ResponseEntity
+                .created(new URI(resource.getId().expand().getHref()))
+                .body(resource);
     }
 
     // Single item
 
     @GetMapping("/{id}")
-    public Resource<Drink> one(@PathVariable String id) {
+    public ResponseEntity<?> one(@PathVariable String id) {
 
         Drink drink = repository.findById(id)
                 .orElseThrow(() -> new DrinkNotFoundException(id));
 
-        return assembler.toResource(drink);
+        return ResponseEntity.ok(assembler.toResource(drink));
     }
 
     @PutMapping("/{id}")
-    public Resource<Drink> replaceDrink(@RequestBody Drink newDrink, @PathVariable String id) {
+    public ResponseEntity<?> replaceDrink(@RequestBody Drink newDrink, @PathVariable String id) throws URISyntaxException {
 
-        return repository.findById(id)
+        Drink updatedDrink = repository.findById(id)
                 .map(drink -> {
                     drink.setName(newDrink.getName());
-                    return assembler.toResource(repository.save(drink));
+                    return repository.save(drink);
                 })
                 .orElseGet(() -> {
                     newDrink.setId(id);
-                    return assembler.toResource(repository.save(newDrink));
+                    return repository.save(newDrink);
                 });
+
+        Resource<Drink> resource = assembler.toResource(updatedDrink);
+
+        return ResponseEntity
+                .created(new URI(resource.getId().expand().getHref()))
+                .body(resource);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteDrink(@PathVariable String id) {
+    public ResponseEntity<?> deleteDrink(@PathVariable String id) {
+
         repository.deleteById(id);
+
+        return ResponseEntity.noContent().build();
     }
 }
