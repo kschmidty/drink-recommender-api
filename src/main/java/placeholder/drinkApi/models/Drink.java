@@ -9,9 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "drinks")
 public class Drink {
 
-    @Transient
-    public static final String SEQUENCE_NAME = "drinks_sequence";
-
     @Id
     public String id;
 
