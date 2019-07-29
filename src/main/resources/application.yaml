@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: drink-recommender
+  data:
+    mongodb:
+      password: ENC(TIjbuIl3yJZqIzZ3L3ScEQ==)
+      uri: mongodb+srv://dbAdmin:${spring.data.mongodb.password}@dev-db-fgs0x.mongodb.net/drinks-dev?retryWrites=true&w=majority
 
 ---
 
