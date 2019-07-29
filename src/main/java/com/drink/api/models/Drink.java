@@ -1,4 +1,4 @@
-package placeholder.drinkApi.models;
+package com.drink.api.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
