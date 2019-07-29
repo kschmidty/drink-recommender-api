@@ -1,16 +1,17 @@
 package com.drink.api.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
+@NoArgsConstructor
 @Document(collection = "drinks")
 public class Drink {
 
     @Id
-    public ObjectId _id;
+    public String id;
 
     public String name;
 
