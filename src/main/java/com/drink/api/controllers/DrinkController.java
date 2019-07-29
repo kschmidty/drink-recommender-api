@@ -4,6 +4,7 @@ import com.drink.api.assemblers.DrinkResourceAssembler;
 import com.drink.api.daos.DrinkRepository;
 import com.drink.api.exceptions.DrinkNotFoundException;
 import com.drink.api.models.Drink;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +20,10 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RequestMapping("/drinks")
 public class DrinkController {
 
-    private final DrinkRepository repository;
-    private final DrinkResourceAssembler assembler;
-
-    DrinkController(DrinkRepository repository,
-                       DrinkResourceAssembler assembler) {
-
-        this.repository = repository;
-        this.assembler = assembler;
-    }
+    @Autowired
+    private DrinkRepository repository;
+    @Autowired
+    private DrinkResourceAssembler assembler;
 
     // Aggregate root
 
