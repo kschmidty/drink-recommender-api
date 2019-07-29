@@ -1,0 +1,341 @@
+{
+  "item": [
+    {
+      "item": [
+        {
+          "request": {
+            "method": "GET",
+            "description": "all",
+            "header": [],
+            "url": {
+              "path": [
+                "drinks"
+              ],
+              "query": [],
+              "host": "{{drink-api}}",
+              "raw": "{{drink-api}}/drinks"
+            }
+          },
+          "name": "all"
+        },
+        {
+          "request": {
+            "method": "POST",
+            "description": "newDrink",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "path": [
+                "drinks"
+              ],
+              "query": [],
+              "host": "{{drink-api}}",
+              "raw": "{{drink-api}}/drinks"
+            }
+          },
+          "response": [
+            {
+              "originalRequest": {
+                "method": "POST",
+                "description": "newDrink",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "path": [
+                    "drinks"
+                  ],
+                  "query": [],
+                  "host": "{{drink-api}}",
+                  "raw": "{{drink-api}}/drinks"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "code": 200,
+              "_postman_previewtype": "text",
+              "responseTime": 87,
+              "name": "newDrink-Example",
+              "header": [
+                {
+                  "name": "date",
+                  "key": "date",
+                  "value": "Mon, 29 Jul 201903:35:24 GMT",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "name": "server",
+                  "key": "server",
+                  "value": "Apache-Coyote/1.1",
+                  "description": "A name for the server"
+                },
+                {
+                  "name": "transfer-encoding",
+                  "key": "transfer-encoding",
+                  "value": "chunked",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "name": "content-type",
+                  "key": "content-type",
+                  "value": "application/json;charset\u003dUTF-8"
+                }
+              ],
+              "body": "{}",
+              "status": "OK"
+            }
+          ],
+          "name": "newDrink"
+        },
+        {
+          "request": {
+            "method": "GET",
+            "description": "one",
+            "header": [],
+            "url": {
+              "path": [
+                "drinks",
+                "{id}"
+              ],
+              "query": [],
+              "host": "{{drink-api}}",
+              "raw": "{{drink-api}}/drinks/{id}"
+            }
+          },
+          "response": [
+            {
+              "originalRequest": {
+                "method": "GET",
+                "description": "one",
+                "header": [],
+                "url": {
+                  "path": [
+                    "drinks",
+                    "{id}"
+                  ],
+                  "query": [],
+                  "host": "{{drink-api}}",
+                  "raw": "{{drink-api}}/drinks/{id}"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "code": 200,
+              "_postman_previewtype": "text",
+              "responseTime": 51,
+              "name": "one-Example",
+              "header": [
+                {
+                  "name": "date",
+                  "key": "date",
+                  "value": "Mon, 29 Jul 201903:35:24 GMT",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "name": "server",
+                  "key": "server",
+                  "value": "Apache-Coyote/1.1",
+                  "description": "A name for the server"
+                },
+                {
+                  "name": "transfer-encoding",
+                  "key": "transfer-encoding",
+                  "value": "chunked",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "name": "content-type",
+                  "key": "content-type",
+                  "value": "application/json;charset\u003dUTF-8"
+                }
+              ],
+              "body": "{}",
+              "status": "OK"
+            }
+          ],
+          "name": "one"
+        },
+        {
+          "request": {
+            "method": "PUT",
+            "description": "replaceDrink",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text",
+                "description": ""
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "path": [
+                "drinks",
+                "{id}"
+              ],
+              "query": [],
+              "host": "{{drink-api}}",
+              "raw": "{{drink-api}}/drinks/{id}"
+            }
+          },
+          "response": [
+            {
+              "originalRequest": {
+                "method": "PUT",
+                "description": "replaceDrink",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text",
+                    "description": ""
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "path": [
+                    "drinks",
+                    "{id}"
+                  ],
+                  "query": [],
+                  "host": "{{drink-api}}",
+                  "raw": "{{drink-api}}/drinks/{id}"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "code": 200,
+              "_postman_previewtype": "text",
+              "responseTime": 54,
+              "name": "replaceDrink-Example",
+              "header": [
+                {
+                  "name": "date",
+                  "key": "date",
+                  "value": "Mon, 29 Jul 201903:35:24 GMT",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "name": "server",
+                  "key": "server",
+                  "value": "Apache-Coyote/1.1",
+                  "description": "A name for the server"
+                },
+                {
+                  "name": "transfer-encoding",
+                  "key": "transfer-encoding",
+                  "value": "chunked",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "name": "content-type",
+                  "key": "content-type",
+                  "value": "application/json;charset\u003dUTF-8"
+                }
+              ],
+              "body": "{}",
+              "status": "OK"
+            }
+          ],
+          "name": "replaceDrink"
+        },
+        {
+          "request": {
+            "method": "DELETE",
+            "description": "deleteDrink",
+            "header": [],
+            "url": {
+              "path": [
+                "drinks",
+                "{id}"
+              ],
+              "query": [],
+              "host": "{{drink-api}}",
+              "raw": "{{drink-api}}/drinks/{id}"
+            }
+          },
+          "response": [
+            {
+              "originalRequest": {
+                "method": "DELETE",
+                "description": "deleteDrink",
+                "header": [],
+                "url": {
+                  "path": [
+                    "drinks",
+                    "{id}"
+                  ],
+                  "query": [],
+                  "host": "{{drink-api}}",
+                  "raw": "{{drink-api}}/drinks/{id}"
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "code": 200,
+              "_postman_previewtype": "text",
+              "responseTime": 46,
+              "name": "deleteDrink-Example",
+              "header": [
+                {
+                  "name": "date",
+                  "key": "date",
+                  "value": "Mon, 29 Jul 201903:35:24 GMT",
+                  "description": "The date and time that the message was sent"
+                },
+                {
+                  "name": "server",
+                  "key": "server",
+                  "value": "Apache-Coyote/1.1",
+                  "description": "A name for the server"
+                },
+                {
+                  "name": "transfer-encoding",
+                  "key": "transfer-encoding",
+                  "value": "chunked",
+                  "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                },
+                {
+                  "name": "content-type",
+                  "key": "content-type",
+                  "value": "application/json;charset\u003dUTF-8"
+                }
+              ],
+              "body": "{}",
+              "status": "OK"
+            }
+          ],
+          "name": "deleteDrink"
+        }
+      ],
+      "name": "DrinkController",
+      "description": "exported from:com.drink.api.controllers.DrinkController"
+    }
+  ],
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "name": "drink-api-20190729033524",
+    "description": "exported at 2019-07-29 03:35:24"
+  }
+}
