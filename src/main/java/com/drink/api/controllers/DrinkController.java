@@ -4,6 +4,8 @@ import com.drink.api.assemblers.DrinkResourceAssembler;
 import com.drink.api.daos.DrinkRepository;
 import com.drink.api.exceptions.DrinkNotFoundException;
 import com.drink.api.models.Drink;
+import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +21,9 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RequestMapping("/drinks")
 public class DrinkController {
 
-    private final DrinkRepository repository;
-    private final DrinkResourceAssembler assembler;
-
-    DrinkController(DrinkRepository repository,
-                       DrinkResourceAssembler assembler) {
-
-        this.repository = repository;
-        this.assembler = assembler;
-    }
+    @Autowired
+    private DrinkRepository repository;
+    private DrinkResourceAssembler assembler;
 
     // Aggregate root
 
@@ -50,43 +46,43 @@ public class DrinkController {
         Drink savedDrink = repository.save(newDrink);
 
         return ResponseEntity
-                .created(linkTo(methodOn(DrinkController.class).one(newDrink.getId())).toUri())
+                .created(linkTo(methodOn(DrinkController.class).one(newDrink.get_id())).toUri())
                 .body(assembler.toResource(savedDrink));
     }
 
     // Single item
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> one(@PathVariable String id) {
+    public ResponseEntity<?> one(@PathVariable ObjectId _id) {
 
-        Drink drink = repository.findById(id)
-                .orElseThrow(() -> new DrinkNotFoundException(id));
+        Drink drink = repository.findBy_id(_id)
+                .orElseThrow(() -> new DrinkNotFoundException(_id));
 
         return ResponseEntity.ok(assembler.toResource(drink));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> replaceDrink(@RequestBody Drink newDrink, @PathVariable String id) {
+    public ResponseEntity<?> replaceDrink(@RequestBody Drink newDrink, @PathVariable ObjectId _id) {
 
-        Drink updatedDrink = repository.findById(id)
+        Drink updatedDrink = repository.findBy_id(_id)
                 .map(drink -> {
                     drink.setName(newDrink.getName());
                     return repository.save(drink);
                 })
                 .orElseGet(() -> {
-                    newDrink.setId(id);
+                    newDrink.set_id(_id);
                     return repository.save(newDrink);
                 });
 
         return ResponseEntity
-                .created(linkTo(methodOn(DrinkController.class).one(updatedDrink.getId())).toUri())
+                .created(linkTo(methodOn(DrinkController.class).one(updatedDrink.get_id())).toUri())
                 .body(assembler.toResource(updatedDrink));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteDrink(@PathVariable String id) {
+    public ResponseEntity<?> deleteDrink(@PathVariable ObjectId _id) {
 
-        repository.deleteById(id);
+        repository.deleteBy_id(_id);
 
         return ResponseEntity.noContent().build();
     }
