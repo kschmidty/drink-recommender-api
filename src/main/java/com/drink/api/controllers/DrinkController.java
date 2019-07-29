@@ -1,16 +1,14 @@
-package placeholder.drinkApi.controllers;
+package com.drink.api.controllers;
 
+import com.drink.api.assemblers.DrinkResourceAssembler;
+import com.drink.api.daos.DrinkRepository;
+import com.drink.api.exceptions.DrinkNotFoundException;
+import com.drink.api.models.Drink;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import placeholder.drinkApi.assemblers.DrinkResourceAssembler;
-import placeholder.drinkApi.daos.DrinkRepository;
-import placeholder.drinkApi.exceptions.DrinkNotFoundException;
-import placeholder.drinkApi.models.Drink;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.stream.Collectors;
 
