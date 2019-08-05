@@ -15,8 +15,6 @@ import java.util.List;
 @Document(collection = "drinks")
 public class Drink {
 
-    private static final String TOO_SMALL_MESSAGE = "Please provide at least 2 ";
-
     @Id
     public String id;
 
@@ -38,12 +36,12 @@ public class Drink {
     private static class Measurement {
 
         @NotNull
-        private double amount;
+        double amount;
 
         @NotEmpty
-        private String unit;
+        String unit;
 
         @NotEmpty
-        private String ingredient;
+        String ingredient;
     }
 }
