@@ -1,6 +1,6 @@
 package com.drink.api.assemblers;
 
-import com.drink.api.models.Drink;
+import com.drink.api.domain.Drink;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.ResourceAssembler;
 import org.springframework.stereotype.Component;

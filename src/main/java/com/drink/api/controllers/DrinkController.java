@@ -1,9 +1,9 @@
 package com.drink.api.controllers;
 
 import com.drink.api.assemblers.DrinkResourceAssembler;
-import com.drink.api.daos.DrinkRepository;
+import com.drink.api.repo.DrinkRepository;
 import com.drink.api.exceptions.DrinkNotFoundException;
-import com.drink.api.models.Drink;
+import com.drink.api.domain.Drink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;

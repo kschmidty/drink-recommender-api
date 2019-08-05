@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 @ControllerAdvice
 public class DrinkNotFoundAdvice {
 
-    @ResponseBody
     @ExceptionHandler(DrinkNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    String DrinkNotFoundHandler(DrinkNotFoundException ex) {
-        return ex.getMessage();
+    public void DrinkNotFoundHandler(HttpServletResponse response) throws IOException {
+        response.sendError(HttpStatus.NOT_FOUND.value());
     }
 }
