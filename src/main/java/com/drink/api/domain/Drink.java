@@ -16,21 +16,21 @@ import java.util.List;
 public class Drink {
 
     @Id
-    public String id;
+    private String id;
 
     @NotEmpty(message = "Please provide a title")
-    public String title;
+    private String title;
 
     @NotEmpty
     @Size(min = 2, message = "Please include at least 2 ingredients")
-    public List<String> ingredients;
+    private List<String> ingredients;
 
     @NotEmpty
     @Size(min = 2, message = "Please include at least 2 measurements")
-    public List<Measurement> measurements;
+    private List<Measurement> measurements;
 
     @NotEmpty(message = "please provide instructions")
-    public List<String> instructions;
+    private List<String> instructions;
 
     @Data
     private static class Measurement {
@@ -43,5 +43,13 @@ public class Drink {
 
         @NotEmpty
         String ingredient;
+    }
+
+    public void setProperties(Drink drink) {
+
+        this.title = drink.getTitle();
+        this.ingredients = drink.getIngredients();
+        this.measurements = drink.getMeasurements();
+        this.instructions = drink.getInstructions();
     }
 }
