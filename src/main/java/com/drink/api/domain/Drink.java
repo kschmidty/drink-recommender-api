@@ -2,7 +2,6 @@ package com.drink.api.domain;
 
 import java.util.List;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,16 +27,14 @@ public class Drink {
   @Size(min = 2, message = "Please include at least 2 measurements")
   private List<Measurement> measurements;
 
-  @NotEmpty(message = "please provide instructions")
+  @NotEmpty(message = "Please provide instructions")
   private List<String> instructions;
 
   @Data
   private static class Measurement {
 
-    @NotNull
     private double amount;
 
-    @NotEmpty
     private String unit;
 
     @NotEmpty
